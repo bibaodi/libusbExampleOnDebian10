@@ -1,7 +1,11 @@
 #!/bin/bash
-	gcc ./listdevs.c -o listdevs -I /usr/include/libusb-1.0 -lusb-1.0
+for i in `ls *.c` ; do 
+	echo "Name:${i} ..."
+	binName=`echo ${i}|cut -d '.' -f 1`
+	
+	gcc ${i} -o ${binName} -I /usr/include/libusb-1.0 -lusb-1.0
 
-	./listdevs
-
+	./${binName}  &
+done
 echo "Success...?"
 
